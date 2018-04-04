@@ -41,6 +41,16 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
-});
+  });
+
+  var server = app.listen(8081, function() {
+  	console.log('Listening on port 8081');
+  });
+
+  server.setTimeout(0, function(){
+  	console.log('Server timed out');
+  });
+
+
 
 module.exports = app;
