@@ -2,7 +2,7 @@
 
 const expect = require ('chai').expect
 const mongoose = require('mongoose');
-const Account = require("../mondels/account");
+const Account = require("../models/account");
 
 describe('Tests for user account', () => {
     before((done) => {
