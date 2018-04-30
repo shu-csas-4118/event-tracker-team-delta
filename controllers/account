@@ -1,6 +1,14 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const Account = require("..module/acount");
+const passport = require('passport');
+const router = express.Router();
 
-router.get('/login'), function(req, res, next){
-    res.render('index')
+router.get('/register', (req, res) => {
+    res.render('register', { });
 }
+
+router.post('/register', (req, res, next) => {
+
+});
+
+module.exports = router;
