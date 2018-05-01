@@ -12,12 +12,13 @@ accountSchema.methods.login = function(username, password, callback){
   var user = Account.findOne({username: username }, callback);
   if(user){
    if(password = user.password){
-      return user;
+     
     }
   }
   else{
-    return null;
+    user = null;
   }
+  return user;
 };
 
 function createAccount(userInfo){

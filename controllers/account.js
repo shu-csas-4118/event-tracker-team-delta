@@ -3,16 +3,27 @@ const Account = require("../models/account");
 const router = express.Router();
 
 router.get('/register', (req, res) => {
-    res.render('register', {us : "", pw: "" });
+    res.render('register', {});
 });
 
 
 router.post('/register', (req, res, next) => {
+    const act = new Account ({
+        username : req.get("username"),
+        password : req.get("password")
+    });
 
+    act.save(function(error){
+        if (error){
+        console.log(error.message);
+        }
+    });
+
+    res.render('index',{});
 });
 
 router.get('/login', (req, res) => {
-    res.render('login', { });
+    res.render('login', {});
 });
 
 router.post('/login', (req, res, next) => {
@@ -29,8 +40,11 @@ router.post('/login', (req, res, next) => {
     });
 
    if(user == null){
-        res.render('register', {un : req.get("username"), pw : req.get("password")});
+        res.render('register', {});
     }
+   /* if(user == "wrong"){
+        res.render('login', {status: "incorrect username or password"});
+    }*/
     else{
         res.render('index', { });
     }
