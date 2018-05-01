@@ -1,4 +1,17 @@
 
+const mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
+var accountSchema = new Schema({
+  date:  String,
+  time: String,
+  owner: String,
+  attendees: Array,
+  id: Number 
+});
+
+var Account = mongoose.model('Account', accountSchema);
+
 function Event() {
 };
 
