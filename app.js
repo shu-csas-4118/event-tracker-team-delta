@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var mongoose = require('mongoose');
 var index = require('./controllers/index');
 var account = require('./controllers/account');
 
@@ -31,6 +31,8 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
+
+mongoose.connect('mongodb://localhost:27017/eventtrack');
 
 // error handler
 app.use(function(err, req, res, next) {

@@ -16,13 +16,25 @@ router.get('/login', (req, res) => {
 });
 
 router.post('/login', (req, res, next) => {
-    var user = Account.login(req.get("username"), req.get("password"), next);
-    if(user){
-        res.render('index', { });
-    }
-    else{
+    var user = null;
+    Account.findOne({username: req.get("username")}, function(error, account){
+        if(error){
+            console.log(error.message);
+         }
+        if(account){
+            user = account.login(req.get("username"), req.get("password"), next);}
+        else{
+            console.log("no user found");
+        }
+    });
+
+   if(user == null){
         res.render('register', {un : req.get("username"), pw : req.get("password")});
     }
+    else{
+        res.render('index', { });
+    }
+
 });
 
 module.exports = router;
