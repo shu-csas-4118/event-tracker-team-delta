@@ -9,10 +9,13 @@ const mongoose = require('mongoose');
  var Account = mongoose.model('Account', accountSchema);
 
 accountSchema.methods.login = function(username, password, callback){
-  var user = Account.findOne({username: username }, callback);
+  var user = Account.findOne({username: username}, callback);
   if(user){
    if(password = user.password){
      
+    }
+    else {
+      user = "wrong";
     }
   }
   else{

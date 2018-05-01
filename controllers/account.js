@@ -19,11 +19,11 @@ router.post('/register', (req, res, next) => {
         }
     });
 
-    res.render('index',{});
+    res.redirect('/account/login');
 });
 
 router.get('/login', (req, res) => {
-    res.render('login', {});
+    res.render('login', {status: "fuck me up"});
 });
 
 router.post('/login', (req, res, next) => {
@@ -40,13 +40,13 @@ router.post('/login', (req, res, next) => {
     });
 
    if(user == null){
-        res.render('register', {});
+        res.redirect('/account/register');
     }
-   /* if(user == "wrong"){
-        res.render('login', {status: "incorrect username or password"});
-    }*/
+   if(user == "wrong"){
+        res.redirect('/account/login');
+    }
     else{
-        res.render('index', { });
+        res.redirect('/');
     }
 
 });
