@@ -8,7 +8,7 @@ router.get('/addEvent', (req, res) => {
 
 
 router.post('/addEvent', (req, res, next) => {
-    const act = new Account ({
+    const evt = new Event ({
         date : req.get("username"),
         time : req.get("password"),
         owner : req.get("owner"), //i want to eventually use passport to get the username of the person that is logged in
@@ -16,7 +16,7 @@ router.post('/addEvent', (req, res, next) => {
         id : 0 //i want to count to number of events already in the system and use that + 1
     });
 
-    act.save(function(error){
+    evt.save(function(error){
         if (error){
         console.log(error.message);
         }
