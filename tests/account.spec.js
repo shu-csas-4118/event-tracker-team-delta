@@ -33,7 +33,7 @@ describe('Tests for user account', () => {
             done();
         });
         Account.findOne({ username: 'john.doe@shu.edu'},(err, account) => {
-            expect(account.password).eql('password');
+            expect(account.password).to.eql('password');
             done();
         });
     });
