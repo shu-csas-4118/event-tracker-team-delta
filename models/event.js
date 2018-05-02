@@ -12,17 +12,5 @@ var eventSchema = new Schema({
 
 var Event = mongoose.model('Event', eventSchema);
 
-eventSchema.methods.addEvent = function(date, time, owner, attendees, id, callback){
-  
-};
-
-//prototype creates a class
-Event.prototype.getEvents = function () {
-    return[];
-}
-
-Event.prototype.getEventById = function(id) {
-    return {id : 1 };
-}
 
 module.exports = Event;

@@ -11,6 +11,7 @@ router.post('/register', (req, res, next) => {
     const act = new Account ({
         username : req.get("username"),
         password : req.get("password")
+        
     });
 
     act.save(function(error){

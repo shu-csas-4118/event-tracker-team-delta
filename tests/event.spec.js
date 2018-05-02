@@ -32,10 +32,10 @@ describe('Event module', ()  => {
         })
     })
 
-    describe('"addEvent"', (date, time, owner, attendees, id) => {
+    describe('"addEvent"', (date, time, owner) => {
         before((done) => {
             const db = mongoose.connect('mongodb://localhost/eventtrack');
-            Event.addEvent(event);
+            Event.addEvent(date, time, owner);
             done();
         });
 
@@ -45,9 +45,9 @@ describe('Event module', ()  => {
         });
 
         it('should  have an addEvent method', ()=> {
-            expect(event.getEventById(id)).to.be.an('object');
+            expect(event.getEventById(0)).to.be.an('object');
             const e = event.getEventById(id);
-            expect(e.id).to.eql(id);
+            expect(e.id).to.eql(0);
             expect(e.date).to.eql(date);
             expect(e.time).to.eql(time);
             expect(e.owner).to.eql(owner);

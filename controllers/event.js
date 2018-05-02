@@ -9,8 +9,8 @@ router.get('/addEvent', (req, res) => {
 
 router.post('/addEvent', (req, res, next) => {
     const evt = new Event ({
-        date : req.get("username"),
-        time : req.get("password"),
+        date : req.get("date"),
+        time : req.get("time"),
         owner : req.get("owner"), //i want to eventually use passport to get the username of the person that is logged in
         attendees: [], //starts off as empty
         id : 0 //i want to count to number of events already in the system and use that + 1
