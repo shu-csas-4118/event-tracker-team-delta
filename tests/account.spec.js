@@ -43,5 +43,15 @@ describe('Tests for user account', () => {
             done();
         });
     });
+    
+    describe('"login"', () => {
+        it('should have a login method', () =>{
+            expect(account.login).to.be.a('function');
+        })
+    
+        it('should return an account or null if no account', () => {
+            expect(event.login('john.doe@shu.edu', 'password')).to.be.an('object');
+        })
+    }) 
 });
 

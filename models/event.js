@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var accountSchema = new Schema({
+var eventSchema = new Schema({
   date:  String,
   time: String,
   owner: String,
@@ -10,9 +10,10 @@ var accountSchema = new Schema({
   id: Number 
 });
 
-var Account = mongoose.model('Account', accountSchema);
+var Event = mongoose.model('Event', eventSchema);
 
-function Event() {
+eventSchema.methods.login = function(date, time, owner, attendees, id, callback){
+  
 };
 
 //prototype creates a class

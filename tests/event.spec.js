@@ -31,11 +31,11 @@ describe('Event module', ()  => {
             expect(event.getEventById(1)).to.be.an('object');
         })
     })
-
+    
     describe('"addEvent"', (date, time, owner, attendees, id) => {
         before((done) => {
             const db = mongoose.connect('mongodb://localhost/eventtrack');
-            event.addEvent(event);
+            Event.addEvent(event);
             done();
         });
 
@@ -52,7 +52,7 @@ describe('Event module', ()  => {
             expect(e.time).to.be(time);
             expect(e.owner).to.be(owner);
             expect(e.attendees).to.be(attendees);
-        })
-    }
+        });
+    });
 })
 
