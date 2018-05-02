@@ -2,6 +2,7 @@
 
 const Event = require('../models/event')
 const expect = require('chai').expect
+const EventList = require("../models/eventList")
 
 const event = new Event();
 
@@ -12,30 +13,11 @@ describe('Event module', ()  => {
         })
     })
 
-    describe('"getEvents"', () => {
-        it('should have a getEvents method', () =>{
-            expect(event.getEvents).to.be.a('function');
-        })
-    
-        it('should return an array of events', () => {
-            expect(event.getEvents()).to.be.an('array');
-        })
-    })
-    
-    describe('"getEventById"', () => {
-        it('should have a getEventById method', ()=> {
-             expect(event.getEventById()).to.be.an('object');
-        })
-    
-        it('should return an array of events', () => {
-            expect(event.getEventById(1)).to.be.an('object');
-        })
-    })
 
     describe('"addEvent"', (date, time, owner, attendees, id) => {
         before((done) => {
             const db = mongoose.connect('mongodb://localhost/eventtrack');
-            event.addEvent(event);
+            EventList.addEvent(event);
             done();
         });
 
@@ -52,7 +34,6 @@ describe('Event module', ()  => {
             expect(e.time).to.be(time);
             expect(e.owner).to.be(owner);
             expect(e.attendees).to.be(attendees);
-        })
-    }
-})
-
+        });
+    });
+});
