@@ -3,7 +3,7 @@ const Event = require("../models/event");
 const router = express.Router();
 
 router.get('/addEvent', (req, res) => {
-    res.render('addEvents', {});
+    res.render('addEvent', {});
 });
 
 
@@ -22,5 +22,7 @@ router.post('/addEvent', (req, res, next) => {
         }
     });
 
-    res.redirect('/account/login');
+    res.redirect('/');
 });
+
+module.exports = router;

@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var index = require('./controllers/index');
 var account = require('./controllers/account');
+var event = require('./controllers/event');
 
 var app = express();
 
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/account', account);
+app.use('/event', event);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
