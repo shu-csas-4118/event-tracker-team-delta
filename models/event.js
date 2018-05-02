@@ -12,7 +12,7 @@ var eventSchema = new Schema({
 
 var Event = mongoose.model('Event', eventSchema);
 
-eventSchema.methods.login = function(date, time, owner, attendees, id, callback){
+eventSchema.methods.addEvent = function(date, time, owner, attendees, id, callback){
   
 };
 

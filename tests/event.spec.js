@@ -51,7 +51,7 @@ describe('Event module', ()  => {
             expect(e.date).to.eql(date);
             expect(e.time).to.eql(time);
             expect(e.owner).to.eql(owner);
-            expect(e.attendees).to.eql(attendees);
+            expect(e.attendees).to.eql([]);
         });
     });
 })
