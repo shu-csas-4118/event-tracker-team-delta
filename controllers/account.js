@@ -30,13 +30,16 @@ router.get('/login', function (req, res)  {
 });
 
 router.post('/login', function (req, res, next)  {
-    Account.findOne({username: req.body.username}, function(error, account){
+    const userN = req.body.username;
+    const print =  Account.findOne({username: userN});
+    console.log(print);
+    Account.findOne({username: userN}, function(error, account){
         if(error){
             console.log(error.message);
             res.render('/account/login',  {status: "error logging in"});
          }
         if(account){
-            var user = account.login(req.body.username, req.body.password, next);
+            const user = account.login(req.body.username, req.body.password, next);
             if(user){
                 res.redirect('/');
             }
