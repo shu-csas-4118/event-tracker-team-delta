@@ -36,7 +36,7 @@ router.post('/login', function (req, res, next)  {
     Account.findOne({username: userN}, function(error, account){
         if(error){
             console.log(error.message);
-            res.render('/account/login',  {status: "error logging in"});
+            res.render('login',  {status: "error logging in"});
          }
         if(account){
             const user = account.login(req.body.username, req.body.password, next);
@@ -44,7 +44,7 @@ router.post('/login', function (req, res, next)  {
                 res.redirect('/');
             }
             else{
-                res.render('/account/login',  {status: "incorrect username or password"});
+                res.render('login',  {status: "incorrect username or password"});
             }
         }
         else{
