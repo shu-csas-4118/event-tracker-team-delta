@@ -8,7 +8,7 @@ const accountSchema = new Schema({
 
  });
 
- var Account = mongoose.model('Account', accountSchema);
+ 
 
 accountSchema.methods.login = function(us, pw, callback){
   if(pw == this.password){
@@ -22,5 +22,7 @@ accountSchema.methods.login = function(us, pw, callback){
 function createAccount(userInfo){
 
 }
+
+var Account = mongoose.model('Account', accountSchema);
 
 module.exports = Account;
