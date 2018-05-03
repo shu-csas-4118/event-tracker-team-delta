@@ -1,17 +1,19 @@
 const express = require('express');
 const Account = require("../models/account");
 const router = express.Router();
+const mongoose = require('mongoose');
 
-router.get('/register', (req, res) => {
+router.get('/register', function (req, res)  {
     res.render('register', {});
 });
 
 
-router.post('/register', (req, res, next) => {
+router.post('/register', function (req, res, next) {
+    console.log(req.body.username);
+    console.log(req.body.password1);
     const act = new Account ({
-        username : req.get("username"),
-        password : req.get("password")
-        
+        username : req.body.username,
+        password : req.body.password1       
     });
 
     act.save(function(error){
@@ -23,32 +25,30 @@ router.post('/register', (req, res, next) => {
     res.redirect('/account/login');
 });
 
-router.get('/login', (req, res) => {
+router.get('/login', function (req, res)  {
     res.render('login', {status: "fuck me up"});
 });
 
-router.post('/login', (req, res, next) => {
-    var user = null;
-    Account.findOne({username: req.get("username")}, function(error, account){
+router.post('/login', function (req, res, next)  {
+    Account.findOne({username: req.body.username}, function(error, account){
         if(error){
             console.log(error.message);
+            res.render('/account/login',  {status: "error logging in"});
          }
         if(account){
-            user = account.login(req.get("username"), req.get("password"), next);}
+            var user = account.login(req.body.username, req.body.password, next);
+            if(user){
+                res.redirect('/');
+            }
+            else{
+                res.render('/account/login',  {status: "incorrect username or password"});
+            }
+        }
         else{
             console.log("no user found");
+            res.redirect('/account/register');
         }
     });
-
-   if(user == null){
-        res.redirect('/account/register');
-    }
-   if(user == "wrong"){
-        res.redirect('/account/login');
-    }
-    else{
-        res.redirect('/');
-    }
 
 });
 

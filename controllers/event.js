@@ -2,16 +2,16 @@ const express = require('express');
 const Event = require("../models/event");
 const router = express.Router();
 
-router.get('/addEvent', (req, res) => {
+router.get('/addEvent', function (req, res) {
     res.render('addEvent', {});
 });
 
 
-router.post('/addEvent', (req, res, next) => {
+router.post('/addEvent', function (req, res, next) {
     const evt = new Event ({
-        date : req.get("date"),
-        time : req.get("time"),
-        owner : req.get("owner"), //i want to eventually use passport to get the username of the person that is logged in
+        date : req.body.date,
+        time : req.body.time,
+        owner : req.body.owner, //i want to eventually use passport to get the username of the person that is logged in
         attendees: [], //starts off as empty
         id : 0 //i want to count to number of events already in the system and use that + 1
     });
@@ -22,7 +22,7 @@ router.post('/addEvent', (req, res, next) => {
         }
     });
 
-    res.redirect('/');
+    res.redirect('viewEvents');
 });
 
 module.exports = router;
