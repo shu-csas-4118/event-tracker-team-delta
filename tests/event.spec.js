@@ -2,6 +2,7 @@
 
 const Event = require('../models/event')
 const expect = require('chai').expect
+const mongoose = require('mongoose');
 
 const event = new Event();
 
