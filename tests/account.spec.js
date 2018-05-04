@@ -30,12 +30,11 @@ describe('Tests for user account', () => {
     it('Find a user by their username', (done) => {
         Account.findOne({ username: 'john.doe@shu.edu' }, (err, account) => {
             expect(account.username).to.eql('john.doe@shu.edu');
-            done();
         });
         Account.findOne({ username: 'john.doe@shu.edu'},(err, account) => {
-            expect(account.password).to.eql('password');
-            done();
+            expect(account.password).to.eql('password');      
         });
+        done();
     });
 
     afterEach((done) => {
