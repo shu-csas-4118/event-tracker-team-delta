@@ -3,11 +3,10 @@ const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var eventSchema = new Schema({
-  date:  String,
-  time: String,
+  date: Date,
   owner: String,
   attendees: Array,
-  id: Number 
+  name: String
 });
 
 var Event = mongoose.model('Event', eventSchema);
