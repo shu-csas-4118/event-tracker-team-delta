@@ -8,8 +8,6 @@ const accountSchema = new Schema({
 
  });
 
- 
-
 accountSchema.methods.login = function(us, pw, callback){
   if(pw == this.password){
      return true;
