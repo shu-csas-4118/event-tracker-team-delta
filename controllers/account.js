@@ -15,7 +15,7 @@ router.post('/register', function (req, res, next) {
             res.render('register', {});
          }
         if(account){
-                res.redirect('/account/login',  {status: "account already exists, login"});
+                res.render('login', {status: "account already exists"});
         }
         else{
             if(req.body.password1 == req.body.password2){

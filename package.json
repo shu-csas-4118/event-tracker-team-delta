@@ -12,6 +12,9 @@
     "debug": "~2.6.9",
     "express": "^4.16.3",
     "hbs": "~4.0.1",
+    "mongo": "^0.1.0",
+    "mongod": "^2.0.0",
+    "mongodb": "^3.0.7",
     "morgan": "~1.9.0",
     "serve-favicon": "~2.4.5"
   },
