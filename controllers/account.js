@@ -20,18 +20,15 @@ router.post('/register', function (req, res, next) {
         }
         else{
             if(req.body.password1 == req.body.password2){
-                const act = new Account ({
-                    username : req.body.username,
-                    password : req.body.password1
-                });
-                
-                act.save(function(error){
-                    if (error){
-                    console.log(error.message);
+                Account.register(new Account({ username : req.body.username }), req.body.password1, function(err, account) {
+                    if (err) {
+                        return res.render('register', { account : account });
                     }
-                });
             
-                res.redirect('/account/login', {status: "Registation Successful! Please log in."});
+                    passport.authenticate('local')(req, res, function () {
+                      res.redirect('/');
+                    });
+                });
             }
             else {
                 res.render('register', {status: "Passwords do not match."});
