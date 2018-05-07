@@ -9,20 +9,34 @@ router.get('/register', function (req, res)  {
 
 
 router.post('/register', function (req, res, next) {
-    console.log(req.body.username);
-    console.log(req.body.password1);
-    const act = new Account ({
-        username : req.body.username,
-        password : req.body.password1       
-    });
-
-    act.save(function(error){
-        if (error){
-        console.log(error.message);
+    Account.findOne({username: req.body.username}, function(error, account){
+        if(error){
+            console.log(error.message);
+            res.render('register', {});
+         }
+        if(account){
+                res.render('login', {status: "account already exists"});
+        }
+        else{
+            if(req.body.password1 == req.body.password2){
+                const act = new Account ({
+                    username : req.body.username,
+                    password : req.body.password1       
+                });
+            
+                act.save(function(error){
+                    if (error){
+                    console.log(error.message);
+                    }
+                });
+            
+                res.redirect('/account/login');
+            }
+            else {
+                res.render('register', {})
+            }
         }
     });
-
-    res.redirect('/account/login');
 });
 
 router.get('/login', function (req, res)  {
@@ -30,9 +44,7 @@ router.get('/login', function (req, res)  {
 });
 
 router.post('/login', function (req, res, next)  {
-    const userN = req.body.username;
-    const print =  Account.findOne({username: userN});
-    console.log(print);
+    const userN = req.body.username; 
     Account.findOne({username: userN}, function(error, account){
         if(error){
             console.log(error.message);
