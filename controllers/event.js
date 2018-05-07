@@ -1,6 +1,7 @@
 const express = require('express');
 const Event = require("../models/event");
 const router = express.Router();
+const mongoose = require('mongoose');
 
 router.get('/addEvent', function (req, res) {
     res.render('addEvent', {});
@@ -22,7 +23,31 @@ router.post('/addEvent', function (req, res, next) {
         }
     });
 
-    res.redirect('viewEvents');
+    res.redirect('viewEvents', {});
 });
+
+    router.get('/viewEvents', function (req, res) {
+        res.render('viewEvents', {});
+    });
+
+    router.post('/viewEvents', function (req, res, next){
+        const evt = Event;
+
+    });
+
+   router.post('/viewEvent', function(req, res, next){
+        Event.findOne({name: req.body.name}, function(error, event){
+           if(error){
+               console.log(error.message);
+           }
+           if(event){
+               res.render('viewEvent', {event: event});
+           } 
+           else{
+              console.log("event clicked is not in the database");
+              res.render('addEvent', {status: "event does not exist, would you like to create it?"});
+           }
+     });
+    });
 
 module.exports = router;

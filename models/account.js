@@ -1,3 +1,5 @@
+/*import { Exception } from 'handlebars';*/
+
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -16,11 +18,22 @@ accountSchema.methods.login = function(us, pw, callback){
       return false;
     }
 };
-
+/*
 function createAccount(userInfo){
-
-}
+  account = new Account;
+  username = username;
+  password = password;
+  try{
+    {
+      throw Exception{
+        return null;
+      }
+    }
+    return account
+  }
+};*/
 
 var Account = mongoose.model('Account', accountSchema);
+
 
 module.exports = Account;

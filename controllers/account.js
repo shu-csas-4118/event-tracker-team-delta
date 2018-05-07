@@ -26,7 +26,7 @@ router.post('/register', function (req, res, next) {
 });
 
 router.get('/login', function (req, res)  {
-    res.render('login', {status: "fuck me up"});
+    res.render('login', {status: "Login here"});
 });
 
 router.post('/login', function (req, res, next)  {

@@ -1,6 +1,7 @@
 'use strict' // enforces proper sytnax
 
 const Event = require('../models/event')
+const mongoose = require('mongoose');
 const expect = require('chai').expect
 
 const event = new Event();

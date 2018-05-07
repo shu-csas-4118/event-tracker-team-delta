@@ -12,5 +12,11 @@ var eventSchema = new Schema({
 
 var Event = mongoose.model('Event', eventSchema);
 
+eventSchema.methods.addEvent = function(date, time, owner, attd, callback){
+  
+}
+eventSchema.methods.viewEvent = function(id, callback){
+  //code for displaying an event?
+};
 
 module.exports = Event;
