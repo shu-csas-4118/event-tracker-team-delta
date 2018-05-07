@@ -15,7 +15,8 @@ eventSchema.methods.addEvent = function(date, time, owner, attd, callback){
   
 }
 eventSchema.methods.viewEvent = function(id, callback){
-  //code for displaying an event?
+
+var listofCollections = db.getCollection('events') //supposedly should show list of events
 };
 
 module.exports = Event; 
