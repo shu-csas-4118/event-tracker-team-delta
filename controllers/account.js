@@ -20,13 +20,13 @@ router.post('/register', function (req, res, next) {
         }
         else{
             if(req.body.password1 == req.body.password2){
-                Account.register(new Account({ username : req.body.username }), req.body.password1, function(err, account) {
+                Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
                     if (err) {
                         return res.render('register', { account : account });
                     }
             
                     passport.authenticate('local')(req, res, function () {
-                      res.redirect('/');
+                      res.render(login, {status: "please login to your new account"});
                     });
                 });
             }
@@ -43,19 +43,29 @@ router.get('/login', function (req, res)  {
 
 router.post('/login', function (req, res, next)  {
     const userN = req.body.username; 
-    Account.findOne({username: userN}, function(error, account){
+    Account.findOne({username: req.body.username}, function(error, account){
         if(error){
             console.log(error.message);
             res.render('login',  {status: "error logging in"});
          }
         if(account){
-            const user = account.login(req.body.username, req.body.password, next);
-            if(user){
-                res.redirect('/');
-            }
-            else{
-                res.render('login',  {status: "incorrect username or password"});
-            }
+            passport.authenticate('local', function(error, account, info){
+                if(error || info){
+                    console.log("something went wrong");
+                    res.render('login',  {status: "error logging in"});
+                 }
+                 else{
+                    req.login(account, function(error){
+                        if(error){
+                            console.log(error.message);
+                            res.render('login',  {status: "error logging in"});
+                        }
+                        else{
+                            res.redirect('/');
+                        }
+                    });
+                 }
+            });
         }
         else{
             console.log("no user found");
@@ -65,4 +75,6 @@ router.post('/login', function (req, res, next)  {
 
 });
 
+
 module.exports = router;
+
