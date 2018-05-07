@@ -54,5 +54,5 @@ describe('Tests for user account', () => {
             
         })
     }) 
-});
+}); 
 

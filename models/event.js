@@ -19,4 +19,4 @@ eventSchema.methods.viewEvent = function(id, callback){
   //code for displaying an event?
 };
 
-module.exports = Event;
+module.exports = Event; 

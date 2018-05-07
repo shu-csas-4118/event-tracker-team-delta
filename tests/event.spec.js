@@ -26,7 +26,7 @@ describe('Event module', ()  => {
     describe('"getEventById"', () => {
         it('should have a getEventById method', ()=> {
              expect(event.getEventById()).to.be.an('object');
-        })
+        }) 
     
         it('should return an array of events', () => {
             expect(event.getEventById(1)).to.be.an('object');

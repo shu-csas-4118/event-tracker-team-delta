@@ -3,9 +3,33 @@
         Create your account!
     </h1>
     <form action ="/account/register" method="post">
-        <input type="text" name="username" placeholder= "username" /> <p></p>
-        <input type="password" name="password1" placeholder= "password"/><p></p>
-        <input type="password" name="password2" placeholder="confirm password" /><p></p>
+        <input type="text" id="username" placeholder= "username" /> <p></p>
+        <div>
+            <input type="password" id="password1" placeholder= "password"/><p></p>
+        </div>
+        <div>
+            <input type="password" id="password2" onkeyup= checkPass(); return false; placeholder="confirm password" /><p></p>
+            <span id="message" class="message"></span>
+        </div>
+        <script type='text/javascript'>
+            function checkpass(){
+            var password1 = getElementbyId('password1')
+            var password2 = getElementbyId('password2')
+            var message = document.getElementbyId('message')
+            var good = "#66cc66"
+            var bad = "#ff6666"
+            if (password1.value = password2.value){
+                password2.style.backgroundColor = good;
+                password2.style.color = good;
+                message.innerHTML = "Passwords match."
+                res.redirect('/account/login')
+            }
+            else{
+                password2.style.backgroundColor = bad;
+                password2.style.color = bad;
+                message.innerHTML = "Please enter a matching password."
+            }
+        </script>
         <button type="submit" class="button"> 
             Create!
         </button>

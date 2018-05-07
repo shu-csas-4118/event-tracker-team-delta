@@ -23,7 +23,7 @@ router.post('/addEvent', function (req, res, next) {
         }
     });
 
-    res.redirect('viewEvents', {});
+    res.redirect('viewEvents', {}); 
 });
 
     router.get('/viewEvents', function (req, res) {
