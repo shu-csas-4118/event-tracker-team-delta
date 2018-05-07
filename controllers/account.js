@@ -22,7 +22,7 @@ router.post('/register', function (req, res, next) {
             if(req.body.password1 == req.body.password2){
                 const act = new Account ({
                     username : req.body.username,
-                    password : req.body.password
+                    password : req.body.password1
                 });
                 
                 act.save(function(error){
