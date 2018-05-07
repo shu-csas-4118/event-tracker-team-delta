@@ -31,17 +31,10 @@ describe('Tests for user account', () => {
         Account.findOne({ username: 'john.doe@shu.edu' }, (err, account) => {
             expect(account.username).to.eql('john.doe@shu.edu');
         });
-<<<<<<< HEAD
-       /* Account.findOne({ username: 'john.doe@shu.edu'},(err, account) => {
-            expect(account.password).to.eql('password');
-            done();
-        });*/
-=======
         Account.findOne({ username: 'john.doe@shu.edu'},(err, account) => {
             expect(account.password).to.eql('password');      
         });
         done();
->>>>>>> 9fc4ab254fa14a08507e070de89a94b3b9a2fbf8
     });
 
     afterEach((done) => {
