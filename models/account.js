@@ -2,6 +2,7 @@
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const passportLocalMongoose = require('passport-local-mongoose');
 
 const accountSchema = new Schema({
    username:  String,
@@ -9,6 +10,8 @@ const accountSchema = new Schema({
    registered: []
 
  });
+
+ Account.plugin(passportLocalMongoose);
 
 accountSchema.methods.login = function(us, pw, callback){
   if(pw == this.password){
