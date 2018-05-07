@@ -2,6 +2,7 @@ const express = require('express');
 const Account = require("../models/account");
 const router = express.Router();
 const mongoose = require('mongoose');
+var crypto = require('crypto');
 
 router.get('/register', function (req, res)  {
     res.render('register', {});
@@ -15,25 +16,25 @@ router.post('/register', function (req, res, next) {
             res.render('register', {});
          }
         if(account){
-                res.render('login', {status: "account already exists"});
+                res.render('login', {status: "Account already exists"});
         }
         else{
             if(req.body.password1 == req.body.password2){
                 const act = new Account ({
                     username : req.body.username,
-                    password : req.body.password1       
+                    password : req.body.password
                 });
-            
+                
                 act.save(function(error){
                     if (error){
                     console.log(error.message);
                     }
                 });
             
-                res.redirect('/account/login');
+                res.redirect('/account/login', {status: "Registation Successful! Please log in."});
             }
             else {
-                res.render('register', {})
+                res.render('register', {status: "Passwords do not match."});
             }
         }
     });
