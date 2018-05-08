@@ -13,7 +13,7 @@ const accountSchema = new Schema({
 
  Account.plugin(passportLocalMongoose);
 
-accountSchema.methods.login = function(us, pw, callback){
+/*accountSchema.methods.login = function(us, pw, callback){
   if(pw == this.password){
      return true;
     }
@@ -21,7 +21,7 @@ accountSchema.methods.login = function(us, pw, callback){
       return false;
     }
 };
-/*
+
 function createAccount(userInfo){
   account = new Account;
   username = username;
