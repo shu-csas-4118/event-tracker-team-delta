@@ -8,6 +8,9 @@ var mongoose = require('mongoose');
 var index = require('./controllers/index');
 var account = require('./controllers/account');
 var event = require('./controllers/event');
+var http = require('http');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
 var app = express();
 
@@ -22,6 +25,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', index);
 app.use('/account', account);
