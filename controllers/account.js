@@ -3,6 +3,7 @@ const Account = require("../models/account");
 const router = express.Router();
 const mongoose = require('mongoose');
 var crypto = require('crypto');
+const passport = require('passport');
 
 router.get('/register', function (req, res)  {
     res.render('register', {});
