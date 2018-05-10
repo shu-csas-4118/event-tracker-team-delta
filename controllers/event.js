@@ -26,7 +26,7 @@ router.post('/addEvent', function (req, res, next) {
 });
 
     router.get('/viewEvents', function (req, res) {
-        res.render('viewEvents', {});
+        res.render('viewEvents');
     });
 
     router.post('/viewEvents', function (req, res, next){

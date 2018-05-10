@@ -1,14 +1,19 @@
 <style>
-body {background-color: #6842f4}
+    body {background-color: white}
 </style>
 
 <head>
-<title><p><font color>="white"><h1><center><b> Events </center></h1></font></p></title>
+    <title><p><font color="black"><h1><center><b> Events </b></center></h1></font></p></title>
+    <script type='javascript'>
+        var e = db.events.find();
+    </script>
+
 </head>
 
 <body>
-<p><font color="white"><big><u><center> Below contains all available events </center></u></big></font></p>
+<p><font color="black"><big><u><center> Below contains all available events </center></u></big></font></p>
 
+</body>
 
  <!--the idea of the html listing is to retrieve
 the data from mongo from events and show events in a list ->
