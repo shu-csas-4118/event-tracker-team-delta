@@ -18,21 +18,28 @@ router.post('/register', function (req, res, next) {
             res.render('register', {});
          }
         if(account){
-                res.render('login', {status: "Account already exists"});
+            console.log("account already exists");
+            res.render('login', {status: "Account already exists"});
         }
         else{
+            console.log("registering");
             if(req.body.password1 == req.body.password2){
-                Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
+                console.log("passwords match");
+                Account.register(new Account({ username : req.body.username }), req.body.password1, function(err, account) {
                     if (err) {
-                        return res.render('register', { account : account });
+                        console.log("registration error");
+                        console.log(err.message);
+                         res.render('register', { status : err.message });
                     }
-            
-                    passport.authenticate('local')(req, res, function () {
-                      res.render(login, {status: "please login to your new account"});
-                    });
+                    else{
+                        console.log("no error, attempting to register");
+                        passport.authenticate('local',  res.redirect('/'));
+                    }
+                    
                 });
             }
             else {
+                console.log("passwords didnt match");
                 res.render('register', {status: "Passwords do not match."});
             }
         }
@@ -52,9 +59,13 @@ router.post('/login', function (req, res, next)  {
          }
         if(account){
             passport.authenticate('local', function(error, account, info){
-                if(error || info){
-                    console.log("something went wrong");
-                    res.render('login',  {status: "error logging in"});
+                if(error){
+                    console.log(error.message);
+                    res.render('login',  {status: error.message});
+                 }
+                 if(info){
+                     console.log(info.message);
+                     res.render('login', {status: info.message});
                  }
                  else{
                     req.login(account, function(error){
