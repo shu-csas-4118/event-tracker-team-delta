@@ -2,6 +2,7 @@ const express = require('express');
 const Event = require("../models/event");
 const router = express.Router();
 const mongoose = require('mongoose');
+var db = mongoose.connection;
 
 router.get('/addEvent', function (req, res) {
     res.render('addEvent', {});
@@ -29,8 +30,9 @@ router.post('/addEvent', function (req, res, next) {
         res.render('viewEvents');
     });
 
-    router.post('/viewEvents', function (req, res, next){
-        const evt = Event;
+    router.post('/view', function (req, res, next){
+        const e = Event.find();
+        res.render('viewEvents', {event: e});
 
     });
 
@@ -48,5 +50,6 @@ router.post('/addEvent', function (req, res, next) {
            }
      });
     });
+    
 
 module.exports = router;

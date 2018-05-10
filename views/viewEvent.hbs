@@ -6,19 +6,18 @@
       var name = e.name;
       var date = e.date;
       var owner = e.owner;
-      document.getElementById("owner").value = owner;
-      document.getElementById("name").value = name;
-      document.getElementById("date").value = date;
+      function funky(){
+        document.getElementById("owner").innerHTML = owner;
+        document.getElementById("name").innerHTML = name;
+        document.getElementById("date").innerHTML = date;
+      }
     </script>
 </head>
 
-<body>
-  <input type = "text" id="owner" name = "owner">
-  </input>
-  <input type = "text" id="name" name = "name">
-  </input>
-  <input type = "text" id="date" name = "date">
-  </input>
+<body onload = "funky();">
+  <div id="owner"> </div>
+  <div id="name"> </div>
+  <div id="date"> </div>
 </body>
 
 </html>

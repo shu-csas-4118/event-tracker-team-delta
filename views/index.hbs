@@ -2,7 +2,14 @@
 <p>Welcome to our Event Tracker</p>
  <a href= "/account/login"> Login </a> <p></p> <a href= "/account/register"> Register </a>
 <p></p>
-<a href= "/event/viewEvents"> Events </a>
+
+<!-- call the eventController at view events
+     "/event/view"-->
+<form action ="/event/view" method="post">
+    <button type="submit" class="button"> 
+         View Events
+     </button>
+</form>     
 <p></p>
 <a href= "/event/addEvent"> CreateEvent </a>
 
