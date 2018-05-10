@@ -11,6 +11,11 @@ var event = require('./controllers/event');
 var http = require('http');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var Account = require('./models/account');
+passport.use(new LocalStrategy(Account.authenticate()));
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
+
 
 var app = express();
 
