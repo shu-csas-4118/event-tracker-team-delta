@@ -11,7 +11,7 @@ const accountSchema = new Schema({
 
  });
 
- Account.plugin(passportLocalMongoose);
+ accountSchema.plugin(passportLocalMongoose);
 
 /*accountSchema.methods.login = function(us, pw, callback){
   if(pw == this.password){
