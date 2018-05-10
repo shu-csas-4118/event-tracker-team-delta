@@ -1,1 +1,24 @@
-{{event}}
+<html lang="en-US">
+
+<head>
+    <script>
+      var e = {{event}};
+      var name = e.name;
+      var date = e.date;
+      var owner = e.owner;
+      document.getElementById("owner").value = owner;
+      document.getElementById("name").value = name;
+      document.getElementById("date").value = date;
+    </script>
+</head>
+
+<body>
+  <input type = "text" id="owner" name = "owner">
+  </input>
+  <input type = "text" id="name" name = "name">
+  </input>
+  <input type = "text" id="date" name = "date">
+  </input>
+</body>
+
+</html>
