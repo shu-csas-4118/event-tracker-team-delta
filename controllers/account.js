@@ -52,34 +52,39 @@ router.get('/login', function (req, res)  {
 
 router.post('/login', function (req, res, next)  {
     const userN = req.body.username; 
+    console.log("username");
+    console.log(userN);
     Account.findOne({username: req.body.username}, function(error, account){
         if(error){
             console.log(error.message);
             res.render('login',  {status: "error logging in"});
          }
         if(account){
+            console.log("account found");
             passport.authenticate('local', function(error, account, info){
                 if(error){
                     console.log(error.message);
-                    res.render('login',  {status: error.message});
+                    return res.render('login',  {status: error.message});
                  }
                  if(info){
                      console.log(info.message);
-                     res.render('login', {status: info.message});
+                     return res.render('login', {status: info.message});
                  }
                  else{
-                    req.login(account, function(error){
-                        if(error){
-                            console.log(error.message);
-                            res.render('login',  {status: "error logging in"});
+                 console.log("no error authenticating");
+                 req.logIn(account, function(error){
+                       if(error){
+                         console.log(error.message);
+                         return res.render('login',  {status: "error logging in"});
                         }
                         else{
-                            res.redirect('/');
+                            return res.redirect('/');
                         }
                     });
-                 }
-            });
+                }
+             })(req, res, next);
         }
+
         else{
             console.log("no user found");
             res.redirect('/account/register');
