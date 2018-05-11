@@ -3,8 +3,19 @@
     body {background-color: white}
 </style>
 
-<body>
+
+<body onload = "funkyJams()" >
     <p><font color="black"><big><u><center> Below contains all available events </center></u></big></font></p>
     <div id = "eves">{{events}}</div>
+
+    <script type = "text/javascript">
+        function funkyJams(){
+            var html='';
+            for (var i=0; i<=events.length; i++) {
+                html+='<div>'+events[i]+'</div>';
+            }
+            document.getElementById('eves').innerHTML+= html;
+        }
+    </script>
 </body>
 

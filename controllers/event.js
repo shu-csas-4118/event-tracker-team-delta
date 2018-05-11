@@ -30,8 +30,20 @@ router.post('/addEvent', function (req, res, next) {
         res.render('viewEvents', {});
     });
 
-    router.post('/viewEvents', function (req, res, next){
-        const evt = Event;
+    router.post('/view', function (req, res, next){
+        Event.find({}, function(error, events){
+            if(error){
+                console.log(error.message);
+             }
+            if(events){
+                console.log("something there");
+                res.render('viewEvents', {events: events[0]});
+             }
+            else{
+                console.log("nothing there");
+            }
+        });
+
 
     });
 

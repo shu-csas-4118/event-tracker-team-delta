@@ -1,23 +1,12 @@
 <html lang="en-US">
 
 <head>
-    <script>
-      var e = {{event}};
-      var name = e.name;
-      var date = e.date;
-      var owner = e.owner;
-      function funky(){
-        document.getElementById("owner").innerHTML = owner;
-        document.getElementById("name").innerHTML = name;
-        document.getElementById("date").innerHTML = date;
-      }
-    </script>
 </head>
 
 <body onload = "funky();">
-  <div id="owner"> </div>
-  <div id="name"> </div>
-  <div id="date"> </div>
+  <div> {{event.name}} </div>
+  <div> {{event.owner}} </div>
+  <div> {{event.date}} </div>
 </body>
 
 </html>
