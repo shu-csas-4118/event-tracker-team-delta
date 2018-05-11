@@ -27,12 +27,22 @@ router.post('/addEvent', function (req, res, next) {
 });
 
     router.get('/viewEvents', function (req, res) {
-        res.render('viewEvents');
+        res.render('viewEvents', {});
     });
 
     router.post('/view', function (req, res, next){
-        const e = Event.find();
-        res.render('viewEvents', {event: e});
+        Event.find({}, function(error, events){
+            if(error){
+                console.log(error.message);
+             }
+            if(events){
+                console.log("something there");
+                res.render('viewEvents', {events: events[0]});
+             }
+            else{
+                console.log("nothing there");
+            }
+        });
 
     });
 

@@ -7,6 +7,7 @@ const passport = require('passport');
 
 
 router.get('/register', function (req, res)  {
+    //if req.user exists, they're already logged in
     res.render('register', {});
 });
 
@@ -47,6 +48,7 @@ router.post('/register', function (req, res, next) {
 });
 
 router.get('/login', function (req, res)  {
+    //if req.user exists, they're already logged in
     res.render('login', {status: "Login here"});
 });
 
