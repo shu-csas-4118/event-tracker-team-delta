@@ -30,7 +30,6 @@ router.post('/addEvent', function (req, res, next) {
         res.render('viewEvents', {});
     });
 
-<<<<<<< HEAD
     router.post('/view', function (req, res, next){
         Event.find({}, function(error, events){
             if(error){
@@ -44,10 +43,7 @@ router.post('/addEvent', function (req, res, next) {
                 console.log("nothing there");
             }
         });
-=======
-    router.post('/viewEvents', function (req, res, next){
-        const evt = Event;
->>>>>>> bbcfc0270107045d6c5f9b8b234e8f50b000ac57
+
 
     });
 
