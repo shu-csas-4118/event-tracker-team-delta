@@ -3,7 +3,6 @@
 const Event = require('../models/event')
 const mongoose = require('mongoose');
 const expect = require('chai').expect
-const mongoose = require('mongoose');
 
 const event = new Event();
 
@@ -53,6 +52,7 @@ describe('Event module', ()  => {
             expect(e.date).to.eql(date);
             expect(e.time).to.eql(time);
             expect(e.owner).to.eql(owner);
+            expect(e.price).to.eql(price);
             expect(e.attendees).to.eql([]);
         });
     });
