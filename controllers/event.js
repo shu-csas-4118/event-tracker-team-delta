@@ -37,7 +37,7 @@ router.post('/addEvent', function (req, res, next) {
              }
             if(events){
                 console.log("something there");
-                res.render('viewEvents', {events: events[0]});
+                res.render('viewEvents', {events: events});
              }
             else{
                 console.log("nothing there");
