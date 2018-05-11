@@ -23,14 +23,10 @@ router.post('/addEvent', function (req, res, next) {
         }
     });
 
-    res.render('viewEvents', {}); 
+    res.redirect('/event/viewEvents'); 
 });
 
     router.get('/viewEvents', function (req, res) {
-        res.redirect('/event/viewEvents');
-    });
-
-    router.post('/view', function (req, res, next){
         Event.find({}, function(error, events){
             if(error){
                 console.log(error.message);
@@ -44,8 +40,10 @@ router.post('/addEvent', function (req, res, next) {
                 console.log("nothing there");
             }
         });
+    });
 
-
+    router.post('/view', function (req, res, next){
+       
     });
 
 function makeUsernames(events){
@@ -59,9 +57,10 @@ function makeUsernames(events){
     return newArray;
 }
 
-   router.post('/viewEvent', function(req, res, next){
-        Event.findOne({name: req.body.name}, function(error, event){
-           if(error){
+router.get('/viewEvent/:eName', function(req, res){ 
+    console.log(req.params.eName);
+    Event.findOne({name: req.params.eName}, function(error, event){
+        if(error){
                console.log(error.message);
            }
            if(event){
@@ -72,6 +71,10 @@ function makeUsernames(events){
               res.render('addEvent', {status: "event does not exist, would you like to create it?"});
            }
      });
+});
+
+router.post('/viewEvent', function(req, res, next){
+
     });
 
 module.exports = router;

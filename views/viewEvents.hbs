@@ -10,21 +10,14 @@
     <script>
         function funkyJams(){
             stuff = document.getElementById("eves").innerHTML;
-            alert(Array.isArray(stuff.split(",")));
+            newArray = stuff.split(",");
             var html='';
-            for (var i=0; i<=events.length; i++) {
-                html+='<p>'+stuff[i] +'</p>';
+            for (var i=0; i<=newArray.length; i++) {
+                html+= '<p></p><a href= "/event/viewEvent/'+newArray[i]+'">' +newArray[i]+ '</a>';
             }
-            document.getElementById("eves").innerHTML+= html;
+            document.getElementById("eves").innerHTML= html;
         }
 
-        function hi(){
-            tit0 = document.getElementById("eves").innerHTML;
-            tit = Array.isArray(tit0);
-            alert(tit);
-            document.getElementById("eves").innerHTML = "fuck";
-        
-        }
     </script>
 </body>
 
