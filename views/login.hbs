@@ -1,14 +1,35 @@
+<html>
+<style>
+    body {background-color: white}
+    body {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/7/7a/1859-Martinique.web.jpg");
+    background-repeat: no-repeat;
+    background-position: right top;
+    margin-right: 200px;
+    background-size: 540px 720px;
+}
+</style>
+
+<body>
+
 <div class="log-form">
-    <h1> 
-        Login
-    </h1>
-    <form action ="/account/login" method="post">
+ <div style="width:500px;height:200px;border:1px solid #000;">
+    <center><h1>
+        Login Page
+    </h1></center> 
+    <form action ="/account/login" method="post"><center>
     {{status}} <p></p>
         <input type="text" name="username" placeholder="username" /> <p></p>
         <input type="password" name="password" placeholder="password" /><p></p>
         <button type="submit" class="button"> 
             Login
         </button>
+        </center>
     </form>
 </div>
+
+</div>
+
+</body>
+</html>
 <!-- <p> text <a href= "/controller/getTag"> word </a> </p> ->
