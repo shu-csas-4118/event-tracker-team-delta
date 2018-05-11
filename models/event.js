@@ -12,8 +12,6 @@ var eventSchema = new Schema({
 
 var Event = mongoose.model('Event', eventSchema);
 
-var url = 'mongodb://localhost/eventtrack'
-
 eventSchema.methods.addEvent = function(date, time, owner, attd, price, callback){
   
 }
