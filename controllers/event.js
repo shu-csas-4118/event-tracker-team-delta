@@ -23,11 +23,11 @@ router.post('/addEvent', function (req, res, next) {
         }
     });
 
-    res.redirect('viewEvents', {}); 
+    res.render('viewEvents', {}); 
 });
 
     router.get('/viewEvents', function (req, res) {
-        res.render('viewEvents', {});
+        res.redirect('/event/viewEvents');
     });
 
     router.post('/view', function (req, res, next){
@@ -37,7 +37,8 @@ router.post('/addEvent', function (req, res, next) {
              }
             if(events){
                 console.log("something there");
-                res.render('viewEvents', {events: events});
+                var newInput = makeUsernames(events);
+                res.render('viewEvents', {events: newInput});
              }
             else{
                 console.log("nothing there");
@@ -46,6 +47,17 @@ router.post('/addEvent', function (req, res, next) {
 
 
     });
+
+function makeUsernames(events){
+    var newArray = [];
+    for(i = 0; i < events.length; i++){
+        var thing = events[i];
+        var newthing = thing.name;
+        console.log(newthing);
+        newArray.push(newthing);
+    }
+    return newArray;
+}
 
    router.post('/viewEvent', function(req, res, next){
         Event.findOne({name: req.body.name}, function(error, event){
