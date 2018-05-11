@@ -2,7 +2,6 @@ const express = require('express');
 const Event = require("../models/event");
 const router = express.Router();
 const mongoose = require('mongoose');
-var db = mongoose.connection;
 
 router.get('/addEvent', function (req, res) {
     res.render('addEvent', {});
@@ -13,7 +12,8 @@ router.post('/addEvent', function (req, res, next) {
     const evt = new Event ({
         date : req.body.date,
         owner : req.body.owner, //i want to eventually use passport to get the username of the person that is logged in
-        attendees: [], //starts off as empty
+        attendees: [], //starts off as 
+        price: req.body.price,
         name : req.body.name //i want to count to number of events already in the system and use that + 1
     });
 
@@ -27,12 +27,11 @@ router.post('/addEvent', function (req, res, next) {
 });
 
     router.get('/viewEvents', function (req, res) {
-        res.render('viewEvents');
+        res.render('viewEvents', {});
     });
 
-    router.post('/view', function (req, res, next){
-        const e = Event.find();
-        res.render('viewEvents', {event: e});
+    router.post('/viewEvents', function (req, res, next){
+        const evt = Event;
 
     });
 
@@ -50,6 +49,5 @@ router.post('/addEvent', function (req, res, next) {
            }
      });
     });
-    
 
 module.exports = router;
