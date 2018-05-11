@@ -3,18 +3,27 @@
     body {background-color: white}
 </style>
 
-
-<body onload = "funkyJams()" >
+<body onload = "hi();" >
     <p><font color="black"><big><u><center> Below contains all available events </center></u></big></font></p>
     <div id = "eves">{{events}}</div>
 
-    <script type = "text/javascript">
+    <script>
         function funkyJams(){
+            events = document.getElementById('eves').innerHTML;
             var html='';
             for (var i=0; i<=events.length; i++) {
-                html+='<div>'+events[i]+'</div>';
+                thing = events[i].name;
+                console.log(thing);
+                html+='<div>'+thing +'</div>';
             }
             document.getElementById('eves').innerHTML+= html;
+        }
+
+        function hi(){
+            console.log("fuck");
+            var hey = document.getElementById('eves').innerHTML;
+            hey = "fuck";
+        
         }
     </script>
 </body>
