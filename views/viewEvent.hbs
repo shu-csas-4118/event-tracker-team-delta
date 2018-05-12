@@ -4,11 +4,25 @@
 </head>
 
 <body onload = "funky();">
-  <div> {{event.name}} </div>
-  <div> {{event.owner}} </div>
-  <div> {{event.date}} </div>
+  <div id = "name"> {{event.name}} </div>
+  <div id = "owner"> {{event.owner}} </div>
+  <div id = "date"> {{event.date}} </div>
+  <div id = "price"> {{event.price}} </div>
+
+  <div id = "register"> </div>
+
 </body>
-<form method='post' action='/view/registerEvent'>
-  <button type='submit'>Register</button>
-</form>
+
+
+<script>
+  function funky(){
+    submit = 'submit';
+    get = 'get';
+    p = document.getElementById("price").innerHTML;
+    n = document.getElementById("name").innerHTML;
+    var html= '<form method='+get+'action = "/event/registerEvent/"'+ p +'/' + n+ '> <button type =' +submit+'> Register</button> </form>';
+   document.getElementById("register").innerHTML = html;
+  }
+</script>
+
 </html>
