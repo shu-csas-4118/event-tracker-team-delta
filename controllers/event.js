@@ -75,7 +75,7 @@ router.get('/viewEvent/:eName', function(req, res){
 
 router.get('/registerEvent/:price/:eName', function(req, res, next){
     console.log("im here im here!!!");
-    res.render('registerEvent', {price: req.params.price, eName: req.params.eName});
+    res.render('registerEvent', {price: req.params.price, name: req.params.eName});
     });
 
 
