@@ -1,20 +1,24 @@
 <html lang="en-US">
 
 <head>
+  <p>
+    <font color="black"><big><u><center> 
+      <div id = "name"> {{event.name}} </div>
+      </center></u></big></font>
+    </p>
 </head>
 
 <body onload = "funky();">
-  <div id = "name"> {{event.name}} </div>
-  <div id = "owner"> {{event.owner}} </div>
-  <div id = "date"> {{event.date}} </div>
-  <div id = "price"> {{event.price}} </div>
-
+  <div id = "owner"> Event owner: {{event.owner}} </div>
+  <div id = "date"> Date and time of event: {{event.date}} </div>
+  <div id = "price"> Event price: ${{event.price}}.00 </div>
+<p><center>
   <form name = "register" method = 'get' action = " ">
     <button type = 'submit'>
       Register
     </button>
   </form>
-
+</center></p>
 </body>
 
 
