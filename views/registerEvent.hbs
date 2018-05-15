@@ -2,22 +2,19 @@
 <h1><center>You can pay for {{name}} here</center></h1>
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 
-<!-- <div class="regevent-form">
-    <h1> 
-        Register for an event!
-    </h1>
+ <div class="regevent-form">
     <form action ="/event/register" method="post">
     {{status}} <p></p>
-        <input type="text" name="username" placeholder="username" /> <p></p>
+        <input type="text" name="f-name" placeholder="First Name" /> <p></p>
+        <input type="text" name="l-name" placeholder="Last Name" /> <p></p>
         <input type="text" name="e-mail" placeholder="e-mail" /><p></p>
-        <button type="submit" class="button"> 
-            Register
-        </button>
+        
+        <div id = "hell"></div> <!-- this button becomes a register button when you get your payment processeses -->
     </form>
-</div> -->
+</div> 
 
-            <p><center><div id="paypal-button-container"></div></center></p>
-            <script>
+<p><center><div id="paypal-button-container"></div></center></p>
+    <script>
                 // Render the PayPal button
                 paypal.Button.render({
                     // Set your environment
@@ -50,9 +47,11 @@
                     // Wait for the payment to be authorized by the customer
                     onAuthorize: function(data, actions) {
                         return actions.payment.execute().then(function() {
-                            window.alert('Payment Complete!');
+                         // if the payment processes render the register button
+                            document.getElementById("hell").innerHTML= 
+                            '<button type="submit" class="button"> Register </button>'
+                            ;                            
                         });
                     }
                 }, '#paypal-button-container');
-
-</script>
+    </script>

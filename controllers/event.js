@@ -78,5 +78,8 @@ router.get('/registerEvent/:price/:eName', function(req, res, next){
     res.render('registerEvent', {price: req.params.price, name: req.params.eName});
     });
 
+router.post('/register', function(req, res, next){
+
+});
 
 module.exports = router;

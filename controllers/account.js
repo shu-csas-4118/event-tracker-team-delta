@@ -48,8 +48,12 @@ router.post('/register', function (req, res, next) {
 });
 
 router.get('/login', function (req, res)  {
-    //if req.user exists, they're already logged in
-    res.render('login', {status: "Login here"});
+    if(req.user){
+        res.render('login', {status: "you're already logged in"})
+    }
+    else{
+        res.render('login', {status: "Login here"});
+    }
 });
 
 router.post('/login', function (req, res, next)  {
