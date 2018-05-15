@@ -7,8 +7,12 @@ const passport = require('passport');
 
 
 router.get('/register', function (req, res)  {
-    //if req.user exists, they're already logged in
-    res.render('register', {});
+   if(req.user){
+        res.render('register', {status: "you're already logged in"});
+   }
+   else{
+       res.render('register', {status: "do you want to create an account"})
+   }
 });
 
 
