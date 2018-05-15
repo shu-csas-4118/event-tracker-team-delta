@@ -29,11 +29,34 @@
     </div>
     </nav>
 
+<style>
+.container {
+    position: center;
+    font-family: Arial;
+}
 
+.text-block {
+    position: center;
+    bottom: 20px;
+    right: 20px;
+    background-color: black;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+</style>
+</head>
+<body> 
+
+<div class="container"> 
+  <div class="text-block">
+    <h1>Create an Event</h1>
+  </div>
+</div>
+
+<center>
 <div class="event-form">
-    <h1> 
-        Create an Event
-    </h1>
+     <div style="width:250px;height:200px;border:1px solid #000;">
     <form action ="/event/addEvent" method="post">
     {{status}} <p></p>
         <input type="text" name="name" placeholder="Event Name" /> <p></p>
@@ -44,4 +67,6 @@
             Create!
         </button>
     </form>
+    </div>
+    </center>
 </div>
