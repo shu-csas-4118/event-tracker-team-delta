@@ -30,11 +30,31 @@
     </nav>
 
 <style>
-    body {background-color: white}
+.container {
+    position: center;
+    font-family: Arial;
+}
+
+.text-block {
+    position: center;
+    bottom: 20px;
+    right: 20px;
+    background-color: black;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+}
 </style>
+</head>
+<body> 
+
+<div class="container"> 
+  <div class="text-block">
+    <center><h1>Below contains all available Events</h1></center>
+  </div>
+</div>
 
 <body onload = "funkyJams()" >
-    <p><font color="black"><big><u><center> Below contains all available events </center></u></big></font></p>
     <div id = "eves"> {{events}} </div>
 
     <script>
