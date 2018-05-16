@@ -52,7 +52,7 @@ h1{
             stuff = document.getElementById("eves").innerHTML;
             newArray = stuff.split(",");
             var html='';
-            for (var i=0; i<=newArray.length; i++) {
+            for (var i=0; i<=newArray.length-1; i++) {
                 html+= '<p></p><a href= "/event/viewEvent/'+newArray[i]+'">' +newArray[i]+ '</a>';
             }
             document.getElementById("eves").innerHTML= html;
