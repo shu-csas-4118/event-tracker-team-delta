@@ -3,11 +3,9 @@
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 
  <div class="regevent-form">
-    <form action ="/event/register" method="post">
+    <form name = "fuck" action =" " id =  {{name}} method="post">
     {{status}} <p></p>
-        <input type="text" name="f-name" placeholder="First Name" /> <p></p>
-        <input type="text" name="l-name" placeholder="Last Name" /> <p></p>
-        <input type="text" name="e-mail" placeholder="e-mail" /><p></p>
+        <p>PLEASE FILL OUT PAYMENT INFORMATION AND THEN CLICK THE REGISTER BUTTON THAT WILL APPEAR</p>
         
         <div id = "hell"></div> <!-- this button becomes a register button when you get your payment processeses -->
     </form>
@@ -47,8 +45,10 @@
                     // Wait for the payment to be authorized by the customer
                     onAuthorize: function(data, actions) {
                         return actions.payment.execute().then(function() {
-                         // if the payment processes render the register button
-                            document.getElementById("hell").innerHTML= 
+                         // if the payment processes render the register button 
+                         
+                         document.fuck.action = "/event/register/" + document.fuck.id; 
+                         document.getElementById("hell").innerHTML= 
                             '<button type="submit" class="button"> Register </button>'
                             ;                            
                         });

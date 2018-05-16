@@ -1,5 +1,6 @@
 const express = require('express');
 const Event = require("../models/event");
+const Account = require("../models/account");
 const router = express.Router();
 const mongoose = require('mongoose');
 
@@ -96,8 +97,58 @@ router.get('/registerEvent/:price/:eName', function(req, res, next){
     }
     });
 
-router.post('/register', function(req, res, next){
+router.post('/register/:name', function(req, res, next){
+    console.log(req.params.name);
 
+    var e = "";
+    var a = "";
+
+    Event.findOne({name: req.params.name}, function(error, event){
+        if(error){
+            console.log("im sobbing 1");
+            res.redirect('/');
+        }
+        if(!event){
+            console.log("im sobbing a lot 1");
+            res.redirect('/');
+        }
+        else{
+            e = event;
+            Account.findOne({username: req.user.username}, function(error, account){
+                if(error){
+                    console.log("im sobbing 2");
+                    res.redirect('/');
+                }
+                if(!account){
+                    console.log("im sobbing a lot 2");
+                    res.redirect('/');
+                }
+                else{ 
+                    a = account;
+                    e.attendees.push(a.username);
+                    a.myEvents.push(e.name);
+
+                    e.save(function(error){
+                        if (error){
+                        console.log(error.message);
+                        }
+                        a.save(function(error){
+                            if (error){
+                            console.log(error.message);
+                            }
+                            res.redirect('/');
+                        });
+                    });
+                   
+                }
+            })
+        }
+    });
 });
+
+   //db.collection.findOneAndUpdate(
+   //     {username: req.user.username},
+   //     {mak}
+
 
 module.exports = router;
