@@ -3,11 +3,11 @@
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 
  <body onload = "myFunks();"> <div class="regevent-form">
-    <form name = "fuck" action =" " id =  {{name}} method="post">
+    <form name = "buy" action =" " id =  {{name}} method="post">
     <div id = "fine" >{{status}}</div> <p></p>
-        <p>PLEASE FILL OUT PAYMENT INFORMATION AND THEN CLICK THE REGISTER BUTTON THAT WILL APPEAR</p>
+        <center><p>PLEASE FILL OUT PAYMENT INFORMATION AND THEN CLICK THE REGISTER BUTTON THAT WILL APPEAR</p></center>
         
-        <div id = "hell"></div> <!-- this button becomes a register button when you get your payment processeses -->
+        <div id = "pay"></div> <!-- this button becomes a register button when you get your payment processeses -->
     </form>
 </div> 
 
@@ -48,7 +48,7 @@
                          // if the payment processes render the register button 
                          
                          document.fuck.action = "/event/register/" + document.fuck.id; 
-                         document.getElementById("hell").innerHTML= 
+                         document.getElementById("pay").innerHTML= 
                             '<button type="submit" class="button"> Register </button>'
                             ;                            
                         });
