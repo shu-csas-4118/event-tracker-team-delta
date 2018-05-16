@@ -8,7 +8,7 @@ const passport = require('passport');
 
 router.get('/register', function (req, res)  {
    if(req.user){
-        res.render('register', {status: "you're already logged in"});
+        res.redirect('/');
    }
    else{
        res.render('register', {status: "do you want to create an account"})
@@ -53,7 +53,7 @@ router.post('/register', function (req, res, next) {
 
 router.get('/login', function (req, res)  {
     if(req.user){
-        res.render('login', {status: "you're already logged in"})
+        res.redirect('/');
     }
     else{
         res.render('login', {status: "Login here"});
@@ -61,9 +61,8 @@ router.get('/login', function (req, res)  {
 });
 
 router.post('/login', function (req, res, next)  {
-    const userN = req.body.username; 
-    console.log("username");
-    console.log(userN);
+    /*
+    const userN = req.body.username;  
     Account.findOne({username: req.body.username}, function(error, account){
         if(error){
             console.log(error.message);
@@ -71,35 +70,36 @@ router.post('/login', function (req, res, next)  {
          }
         if(account){
             console.log("account found");
-            passport.authenticate('local', function(error, account, info){
-                if(error){
-                    console.log(error.message);
-                    return res.render('login',  {status: error.message});
-                 }
-                 if(info){
-                     console.log(info.message);
-                     return res.render('login', {status: info.message});
-                 }
-                 else{
-                 console.log("no error authenticating");
-                 req.logIn(account, function(error){
-                       if(error){
-                         console.log(error.message);
-                         return res.render('login',  {status: "error logging in"});
-                        }
-                        else{
-                            return res.redirect('/');
-                        }
-                    });
-                }
-             })(req, res, next);
+            
         }
 
         else{
             console.log("no user found");
             res.redirect('/account/register');
         }
-    });
+    });*/
+    passport.authenticate('local', function(error, account, info){
+        if(error){
+            console.log(error.message);
+            return res.render('login',  {status: error.message});
+         }
+         if(info){
+             console.log(info.message);
+             return res.render('login', {status: info.message});
+         }
+         else{
+         console.log("no error authenticating");
+         req.login(account, function(error) {
+               if(error) {
+                 console.log(error.message);
+                 return res.render('login',  {status: "error logging in"});
+                }
+                else {
+                    return res.redirect('/');
+                }
+            });
+        }
+     })(req, res, next);
 
 });
 
