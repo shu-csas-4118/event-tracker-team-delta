@@ -46,7 +46,7 @@ router.post('/register', function (req, res, next) {
                     }
                     else{
                         console.log("no error, attempting to register");
-                        passport.authenticate('local',  res.redirect('/'));
+                        passport.authenticate('local',  res.redirect('/account/login'));
                     }
                     
                 });

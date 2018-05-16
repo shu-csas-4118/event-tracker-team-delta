@@ -136,7 +136,7 @@ router.post('/register/:name', function(req, res, next){
                             if (error){
                             console.log(error.message);
                             }
-                            res.redirect('/');
+                            res.render('registerEvent', {status: "would you like to book a hotel?"});
                         });
                     });
                    

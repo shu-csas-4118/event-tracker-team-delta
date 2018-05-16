@@ -2,9 +2,9 @@
 <h1><center>You can pay for {{name}} here</center></h1>
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 
- <div class="regevent-form">
+ <body onload = "myFunks();"> <div class="regevent-form">
     <form name = "fuck" action =" " id =  {{name}} method="post">
-    {{status}} <p></p>
+    <div id = "fine" >{{status}}</div> <p></p>
         <p>PLEASE FILL OUT PAYMENT INFORMATION AND THEN CLICK THE REGISTER BUTTON THAT WILL APPEAR</p>
         
         <div id = "hell"></div> <!-- this button becomes a register button when you get your payment processeses -->
@@ -54,4 +54,14 @@
                         });
                     }
                 }, '#paypal-button-container');
+
+                function myFunks(){
+                   if(document.getElementById("fine").innerHTML.length > 5){
+                       document.getElementById("fine").innerHTML = '<a href = //lmgtfy.com/?q=hotels> "would you like to book a hotel?"</a>'
+                   }
+                }
+
+                
     </script>
+
+    </body>
